@@ -21,21 +21,24 @@ function fs() {
 # Credits to http://dotfiles.org/~pseup/.bashrc
 function extract() {
 	if [ -f $1 ] ; then
+		local fullpath=`perl -e 'use Cwd "abs_path";print abs_path(shift)' $1`
 		local filename=$(basename "$1")
 		local foldername="${filename%%.*}"
+		mkdir -p $foldername && cd $foldername
 		case $1 in
-			*.tar.bz2) mkdir $foldername && tar xjf $1 -C "$foldername" ;;
-			*.tar.gz) mkdir $foldername && tar xzf $1 -C "$foldername" ;;
-			*.bz2) bunzip2 $1 ;;
-			*.rar) rar x $1 ;;
-			*.gz) gunzip $1 ;;
-			*.tar) mkdir $foldername && tar xf $1 -C "$foldername" ;;
-			*.tbz2) mkdir $foldername && tar xjf $1 -C "$foldername" ;;
-			*.tgz) mkdir $foldername && tar xzf $1 -C "$foldername" ;;
-			*.zip) unzip $1 -d "$foldername" ;;
-			*.Z) uncompress $1 ;;
-			*.7z) 7z x $1 ;;
-			*) echo "'$1' cannot be extracted via extract()" ;;
+			*.tar.bz2) tar xjf $fullpath ;;
+			*.tar.gz) tar xzf $fullpath ;;
+			*.tar.xz) tar Jxvf $fullpath ;;
+			*.tar.Z) tar xzf $fullpath ;;
+			*.tar) tar xf $fullpath ;;
+			*.taz) tar xzf $fullpath ;;
+			*.tb2) tar xjf $fullpath ;;
+			*.tbz) tar xjf $fullpath ;;
+			*.tbz2) tar xjf $fullpath ;;
+			*.tgz) tar xzf $fullpath ;;
+			*.txz) tar Jxvf $fullpath ;;
+			*.zip) unzip $fullpath ;;
+			*) echo "'$fullpath' cannot be extracted via extract()" ;;
 		esac
 	else
 		echo "'$1' is not a valid file"
