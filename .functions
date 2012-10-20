@@ -184,3 +184,43 @@ function unquarantine() {
 		xattr -r -d "$attribute" "$@"
 	done
 }
+
+# Create sublime projects for a certain directory
+# createsublimeprojects storedirectory
+function createsublimeprojects() {
+	if [ $# -eq 0 ]
+	then
+		echo "Please supply a store directory"
+		return
+	fi
+
+	local currentDir=`pwd`
+
+	# Put all the folders in a specific array
+	local folders=`find $(pwd -P) -mindepth 1 -maxdepth 1 -type d`
+
+	# Create the output folder and cd into it
+	mkdir -p "$1"
+	cd $1
+
+	for folder in $folders
+	do
+		echo "{
+	\"folders\":
+	[
+		{
+			\"path\": \"$folder\",
+			\"folder_exclude_patterns\": [\"target\"]
+		}
+	]
+}" > $(basename $folder).sublime-project
+		subl --command openProject $(basename $folder).sublime-project
+		#The following didn't seem to work
+		#subl --command closeProject
+		subl --command close
+		subl --command close
+	done
+	subl --command exit
+
+	cd $currentDir
+}
