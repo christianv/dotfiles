@@ -9,6 +9,9 @@ export PATH="$HOME/.rvm/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
+# Set the JRuby opts
+export JRUBY_OPTS="-Xcext.enabled=true -J-d32 -J-client -X-C"
+
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
 # * ~/.extra can be used for other settings you don’t want to commit.
