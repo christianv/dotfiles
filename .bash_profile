@@ -1,8 +1,16 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
-# Add npm to the PATH
-export PATH="/usr/local/share/npm/bin:$PATH"
+# Make sure the homebrew files are in front
+export PATH="/usr/local/bin:$PATH"
+
+# Add rvm
+export PATH="$HOME/.rvm/bin:$PATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# Set the JRuby opts
+export JRUBY_OPTS="-Xcext.enabled=true -J-d32 -J-client -X-C"
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
