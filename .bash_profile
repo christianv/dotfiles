@@ -4,8 +4,11 @@ export PATH="$HOME/bin:$PATH"
 # Make sure the homebrew files are in front
 export PATH="/usr/local/bin:$PATH"
 
+# Add npm to the PATH
+export PATH="/usr/local/share/npm/bin/:$PATH"
+
 # Add rvm
-export PATH="$HOME/.rvm/bin:$PATH"
+#export PATH="$HOME/.rvm/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
