@@ -210,7 +210,7 @@ function createsublimeprojects() {
 	[
 		{
 			\"path\": \"$folder\",
-			\"folder_exclude_patterns\": [\"target\"]
+			\"folder_exclude_patterns\": [\"target\", \"tmp\"]
 		}
 	]
 }" > $(basename $folder).sublime-project

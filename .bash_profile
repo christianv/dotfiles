@@ -1,9 +1,6 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
-# Make sure the homebrew files are in front
-export PATH="/usr/local/bin:$PATH"
-
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin/:$PATH"
 
@@ -11,6 +8,9 @@ export PATH="/usr/local/share/npm/bin/:$PATH"
 #export PATH="$HOME/.rvm/bin:$PATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# Make sure the homebrew files are in front
+export PATH="/usr/local/bin:$PATH"
 
 # Set the JRuby opts
 export JRUBY_OPTS="-Xcext.enabled=true -J-d32 -J-client -X-C"
