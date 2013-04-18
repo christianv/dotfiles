@@ -62,5 +62,8 @@ eval "$(hub alias -s)"
 # Set maven options
 export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
 
+# Disable simple_cov
+export SIMPLE_COV_ENABLED="false"
+
 # Execute z.sh
 . ~/code/z/z.sh
