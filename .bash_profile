@@ -1,6 +1,9 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH"
 
+# Add python to the PATH
+export PATH="/usr/local/share/python/:$PATH"
+
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin/:$PATH"
 
