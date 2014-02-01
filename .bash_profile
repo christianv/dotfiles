@@ -37,3 +37,18 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 
 # If possible, add tab completion for many more commands
 [ -f /etc/bash_completion ] && source /etc/bash_completion
+
+# Set hub option
+eval "$(hub alias -s)"
+
+# Set maven options
+export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
+
+# Disable simple_cov
+export SIMPLE_COV_ENABLED="false"
+
+# Add python to the PATH
+export PATH="/usr/local/share/python/:$PATH"
+
+# Add npm to the PATH
+export PATH="/usr/local/share/npm/bin:$PATH"
