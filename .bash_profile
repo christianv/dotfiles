@@ -53,6 +53,9 @@ export PATH="/usr/local/share/python/:$PATH"
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin:$PATH"
 
+# Add local node modules to PATH
+export PATH="./node_modules/.bin:$PATH"
+
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
 
