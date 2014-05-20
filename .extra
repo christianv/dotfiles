@@ -1,0 +1,48 @@
+# Git credentials
+# Not in the repository, to prevent people from accidentally committing under my name
+GIT_AUTHOR_NAME="Christian Vuerings"
+GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
+git config --global user.name "$GIT_AUTHOR_NAME"
+GIT_AUTHOR_EMAIL="vueringschristian@gmail.com"
+GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
+git config --global user.email "$GIT_AUTHOR_EMAIL"
+
+### Aliases
+
+# Start postgres
+alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+
+# Set hub option
+eval "$(hub alias -s)"
+
+### Git Config
+
+# Aliases
+git config --global alias.st 'status -s'
+git config --global alias.co 'checkout'
+
+# Editor
+git config --global core.editor = "subl -n -w"
+
+### ENV Variables
+
+# Set maven options
+export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
+
+# Disable simple_cov
+export SIMPLE_COV_ENABLED="false"
+
+# Add python to the PATH
+export PATH="/usr/local/share/python/:$PATH"
+
+# Add npm to the PATH
+export PATH="/usr/local/share/npm/bin:$PATH"
+
+# Add local node modules to PATH
+export PATH="./node_modules/.bin:$PATH"
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# Load RVM into a shell session *as a function*
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
