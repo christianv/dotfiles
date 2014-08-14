@@ -12,6 +12,7 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 # Start postgres
 alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 alias calpr="git pull-request -b ets-berkeley-edu:master -o"
+alias calupdate="git fetch ets && git merge ets/master"
 
 # Set hub option
 eval "$(hub alias -s)"
