@@ -25,6 +25,7 @@ function calpr() {
 		echo "Can't create a PR, not on any branch"
 	fi
 }
+alias calgem="bundle install && git checkout -- Gemfile.lock && bundle install"
 alias calupdate="git checkout master && git fetch ets && git merge ets/master"
 
 # Set hub option
