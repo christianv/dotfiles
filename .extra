@@ -19,7 +19,7 @@ function calbr() {
 function calpr() {
 	if branch=$(git symbolic-ref --short -q HEAD)
 	then
-		git push origin $branch
+		git push -f origin $branch
 		hub pull-request -b ets-berkeley-edu:master -o
 	else
 		echo "Can't create a PR, not on any branch"
