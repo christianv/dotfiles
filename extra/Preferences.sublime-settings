@@ -21,8 +21,7 @@
 		".bundle",
 		".sass-cache",
 		".svn",
-		".hg",
-		"node_modules"
+		".hg"
 	],
 	"font_size": 13,
 	"highlight_line": true,
