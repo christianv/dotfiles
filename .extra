@@ -8,6 +8,8 @@ GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ### Aliases
+alias p="cd ~/Projects"
+alias c="cd ~/Projects/CalCentral"
 
 # Start postgres
 alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
@@ -65,3 +67,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Copy the sublime preferences
 cp -r extra/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+
+# JRUBY
+export JRUBY_OPTS="--dev"
