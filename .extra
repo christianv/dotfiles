@@ -9,7 +9,7 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ### Aliases
 alias p="cd ~/Projects"
-alias c="cd ~/Projects/CalCentral"
+alias c="cd ~/Projects/calcentral"
 
 # Start postgres
 alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
