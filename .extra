@@ -18,17 +18,21 @@ alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgre
 function calbr() {
 	git checkout -b $1 ets/master
 }
-function calpr() {
+function makepr() {
 	if branch=$(git symbolic-ref --short -q HEAD)
 	then
 		git push -f origin $branch
-		hub pull-request -b ets-berkeley-edu:master -o
+		hub pull-request -b ets-berkeley-edu:$1 -o
 	else
 		echo "Can't create a PR, not on any branch"
 	fi
 }
+
+alias calpr="makepr master"
+alias calprsis="makepr sis-master"
+
 alias calgem="bundle install && git checkout -- Gemfile.lock && bundle install"
-alias calupdate="git checkout master && git fetch ets && git merge ets/master"
+alias calupdate="git fetch ets && git checkout sis-master && git merge ets/sis-master && git checkout master && git merge ets/master"
 
 # Set hub option
 eval "$(hub alias -s)"
