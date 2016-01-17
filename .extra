@@ -3,36 +3,47 @@
 GIT_AUTHOR_NAME="Christian Vuerings"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-GIT_AUTHOR_EMAIL="vueringschristian@gmail.com"
+# cvuerings is my pinterest ldap account
+if [[ "${USER}" == "cvuerings" ]]; then
+	GIT_AUTHOR_EMAIL="vueringschristian@gmail.com"
+else
+	GIT_AUTHOR_EMAIL="cvuerings@pinterest.com"
+fi;
+
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ### Aliases
-alias p="cd ~/Projects"
-alias c="cd ~/Projects/calcentral"
+if [[ "${USER}" == "cvuerings" ]]; then
+	alias c="cd ~/code"
+	alias p="cd ~/code/pinboard"
+else
+	alias p="cd ~/Projects"
+	alias c="cd ~/Projects/calcentral"
 
-# Start postgres
-alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
+	# Start postgres
+	alias startpostgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start"
 
-# CalCentral specific
-function calbr() {
-	git checkout -b $1 ets/master
-}
-function makepr() {
-	if branch=$(git symbolic-ref --short -q HEAD)
-	then
-		git push -f origin $branch
-		hub pull-request -b ets-berkeley-edu:$1 -o
-	else
-		echo "Can't create a PR, not on any branch"
-	fi
-}
+	# CalCentral specific
+	function calbr() {
+		git checkout -b $1 ets/master
+	}
+	function makepr() {
+		if branch=$(git symbolic-ref --short -q HEAD)
+		then
+			git push -f origin $branch
+			hub pull-request -b ets-berkeley-edu:$1 -o
+		else
+			echo "Can't create a PR, not on any branch"
+		fi
+	}
 
-alias calpr="makepr master"
-alias calprsis="makepr sis-master"
+	alias calpr="makepr master"
+	alias calprsis="makepr sis-master"
 
-alias calgem="bundle install && git checkout -- Gemfile.lock && bundle install"
-alias calupdate="git fetch ets && git checkout sis-master && git merge ets/sis-master && git checkout master && git merge ets/master"
+	alias calgem="bundle install && git checkout -- Gemfile.lock && bundle install"
+	alias calupdate="git fetch ets && git checkout sis-master && git merge ets/sis-master && git checkout master && git merge ets/master"
+fi;
 
 # Set hub option
 eval "$(hub alias -s)"
@@ -44,15 +55,9 @@ git config --global alias.st 'status -s'
 git config --global alias.co 'checkout'
 
 # Editor
-git config --global core.editor "subl -n -w"
+git config --global core.editor "atom --wait"
 
 ### ENV Variables
-
-# Set maven options
-export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
-
-# Disable simple_cov
-export SIMPLE_COV_ENABLED="false"
 
 # Add python to the PATH
 export PATH="/usr/local/share/python/:$PATH"
@@ -63,17 +68,30 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Add local node modules to PATH
 export PATH="./node_modules/.bin:$PATH"
 
-# Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/.rvm/bin"
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
+if [[ "${USER}" == "cvuerings" ]]; then
+
+	export PATH="/Users/cvuerings/install/arcanist/bin/:$PATH"
+
+else
+
+	# Set maven options
+	export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
+
+	# Disable simple_cov
+	export SIMPLE_COV_ENABLED="false"
+
+	# Copy the sublime preferences
+	cp -r extra/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
+
+	# JRUBY
+	export JRUBY_OPTS="--dev"
+fi;
+
+# Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/bin"
+
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# Copy the sublime preferences
-cp -r extra/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
-
-# JRUBY
-export JRUBY_OPTS="--dev"
