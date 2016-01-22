@@ -14,6 +14,8 @@ GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 ### Aliases
+git config --global alias.sync '!git fetch origin && git rebase origin/master'
+
 if [[ "${USER}" == "cvuerings" ]]; then
 	alias c="cd ~/code"
 	alias p="cd ~/code/pinboard"
@@ -95,3 +97,39 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+
+if [[ "${USER}" == "cvuerings" ]]; then
+	# Watcher script for Pinterest
+	function watcher() {
+		local HOST=devapp
+
+		if [ $# -eq 1 ]; then
+      local PROJECT=$1
+    else
+      local PROJECT=pinboard
+    fi
+
+		case $PROJECT in
+    magnus)
+      FLAGS="--exclude-git --exclude=/bin --exclude=/pkg"
+      ;;
+    optimus)
+      FLAGS="--exclude=*.jar"
+      ;;
+    *)
+      FLAGS="--exclude-git"
+      ;;
+		esac
+
+		if [ -z "`pgrep -fl ssh | grep '[s]sh -MNf '$HOST`" ]; then
+      echo "Starting: ssh -MNf $HOST"
+      ssh -MNf $HOST
+    fi
+
+		python $HOME/code/pinboard/bin/watcher.py \
+    	$FLAGS \
+    	-s $HOME/code/$PROJECT/ \
+    	$HOST:/home/$USER/code/$PROJECT/
+	}
+fi;

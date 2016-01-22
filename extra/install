@@ -14,3 +14,23 @@ gem install scss_lint
 
 # Install starred atom packages
 apm stars --install
+
+# Install other applications
+brew cask install --appdir="/Applications" appcleaner
+brew cask install --appdir="/Applications" cheatsheet
+brew cask install --appdir="/Applications" dropbox
+brew cask install --appdir="/Applications" firefox
+brew cask install --appdir="/Applications" spectacle
+brew cask install --appdir="/Applications" spotify
+
+# https://github.com/sindresorhus/quick-look-plugins
+brew cask install qlcolorcode
+brew cask install qlstephen
+brew cask install qlmarkdown
+brew cask install quicklook-json
+brew cask install qlimagesize
+brew cask install qlprettypatch
+brew cask install quicklook-csv
+brew cask install betterzipql
+brew cask install webpquicklook
+brew cask install suspicious-package
