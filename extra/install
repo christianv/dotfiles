@@ -22,6 +22,7 @@ brew cask install --appdir="/Applications" dropbox
 brew cask install --appdir="/Applications" firefox
 brew cask install --appdir="/Applications" spectacle
 brew cask install --appdir="/Applications" spotify
+brew cask install --appdir="/Applications" virtualbox
 
 # https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode
