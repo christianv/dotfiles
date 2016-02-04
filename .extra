@@ -34,6 +34,8 @@ else
 		if branch=$(git symbolic-ref --short -q HEAD)
 		then
 			git push -f origin $branch
+			# Sleep for 1 second to see whether this fixes showing an incorrect PR message
+			sleep 1
 			hub pull-request -b ets-berkeley-edu:$1 -o
 		else
 			echo "Can't create a PR, not on any branch"
@@ -41,10 +43,9 @@ else
 	}
 
 	alias calpr="makepr master"
-	alias calprsis="makepr sis-master"
 
 	alias calgem="bundle install && git checkout -- Gemfile.lock && bundle install"
-	alias calupdate="git fetch ets && git checkout sis-master && git merge ets/sis-master && git checkout master && git merge ets/master"
+	alias calupdate="git fetch ets && git checkout master && git merge ets/master"
 fi;
 
 # Set hub option
