@@ -19,6 +19,10 @@ git config --global alias.sync '!git fetch origin && git rebase origin/master'
 if [[ "${USER}" == "cvuerings" ]]; then
 	alias c="cd ~/code"
 	alias p="cd ~/code/pinboard"
+
+	alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
+	alias sshpt="ssh devapp -t 'cd ~/code/pinboard && bash --login' && tmux attach -t devserver"
+	alias pupdate="p && git co master && git fetch origin && git rebase origin/master"
 else
 	alias p="cd ~/Projects"
 	alias c="cd ~/Projects/calcentral"
