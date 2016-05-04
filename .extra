@@ -141,4 +141,9 @@ fi;
 
 
 # Install script
+# Install Brew
 # /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# Run Brew
+# ./brew.sh
+# OS X
+# ./.osx
