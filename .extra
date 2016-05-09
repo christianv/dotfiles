@@ -135,7 +135,7 @@ if [[ "${USER}" == "christian" ]]; then
 		python $HOME/code/pinboard/bin/watcher.py \
     	$FLAGS \
     	-s $HOME/code/$PROJECT/ \
-    	$HOST:/home/$USER/code/$PROJECT/
+    	$HOST:/home/cvuerings/code/$PROJECT/
 	}
 fi;
 
