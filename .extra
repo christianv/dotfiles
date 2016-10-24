@@ -21,7 +21,7 @@ if [[ "${USER}" == "christian" ]]; then
 	alias p="cd ~/code/pinboard"
 
 	alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
-	alias sshpt="ssh devapp -t 'cd ~/code/pinboard && tmux attach -t devserver && bash --login'"
+	alias sshpt="ssh devapp -t 'cd ~/code/pinboard && make web && bash --login'"
 	alias pupdate="p && git co master && git fetch origin && git rebase origin/master"
 else
 	alias p="cd ~/Projects"

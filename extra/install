@@ -30,6 +30,7 @@ brew cask install --appdir="/Applications" spectacle
 brew cask install --appdir="/Applications" spotify
 brew cask install --appdir="/Applications" virtualbox
 brew cask install --appdir="/Applications" the-unarchiver
+brew cask install lastpass
 
 # https://github.com/sindresorhus/quick-look-plugins
 brew cask install qlcolorcode
