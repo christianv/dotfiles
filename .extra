@@ -76,7 +76,7 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
-. "$(brew --prefix nvm)/nvm.sh"
+  . "/usr/local/opt/nvm/nvm.sh"
 
 if [[ "${USER}" == "christian" ]]; then
 
