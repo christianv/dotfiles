@@ -37,7 +37,7 @@ git config --global alias.st 'status -s'
 git config --global alias.co 'checkout'
 
 # Editor
-git config --global core.editor "atom --wait"
+git config --global core.editor "code --wait"
 
 ### ENV Variables
 
