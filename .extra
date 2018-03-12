@@ -17,8 +17,8 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global alias.sync '!git fetch origin && git rebase origin/master'
 
 alias c="cd ~/code"
-alias g="cd ~/code/gestalt && nvm use 7"
-alias p="cd ~/code/pinboard && nvm use 4.8.3"
+alias g="cd ~/code/gestalt"
+alias p="cd ~/code/pinboard"
 
 alias gupdate="g && git fetch upstream && git rebase upstream/master"
 alias grun="g && yarn && yarn start"
