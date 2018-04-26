@@ -27,6 +27,8 @@ alias pupdate="p && git co master && git fetch origin && git rebase origin/maste
 alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
 alias sshpt="ssh devapp -t 'cd ~/code/pinboard && make web && bash --login'"
 
+alias wp="watchman-processor"
+
 # Set hub option
 eval "$(hub alias -s)"
 
