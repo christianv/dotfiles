@@ -52,3 +52,9 @@ if [[ "${USER}" == "christian" ]]; then
 	git clone https://github.com/phacility/arcanist.git
 	arc set-config phabricator.uri https://phabricator.pinadmin.com/
 fi;
+
+# Install CLI tools
+brew install bat
+brew install prettyping
+brew install htop
+brew install diff-so-fancy

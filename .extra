@@ -28,6 +28,8 @@ alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
 alias sshpt="ssh devapp -t 'cd ~/code/pinboard && make web && bash --login'"
 
 alias wp="watchman-processor"
+alias nw="BUILD=node yarn jest --watch"
+alias cw="BUILD=client yarn jest --watch"
 
 # Set hub option
 eval "$(hub alias -s)"
