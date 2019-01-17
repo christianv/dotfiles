@@ -19,6 +19,9 @@ git config --global alias.sync '!git fetch origin && git rebase origin/master'
 alias c="cd ~/code"
 alias g="cd ~/code/gestalt"
 alias p="cd ~/code/pinboard"
+alias pw="cd ~/code/pinboard/webapp"
+
+alias j="yarn run jest --watch"
 
 alias gupdate="g && git fetch upstream && git rebase upstream/master"
 alias grun="g && yarn && yarn start"
@@ -27,9 +30,17 @@ alias pupdate="p && git co master && git fetch origin && git rebase origin/maste
 alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
 alias sshpt="ssh devapp -t 'cd ~/code/pinboard && make web && bash --login'"
 
-alias wp="watchman-processor"
+alias wp="pw && yarn dev"
 alias nw="BUILD=node yarn jest --watch"
 alias cw="BUILD=client yarn jest --watch"
+
+gcr () {
+  echo "Checking out and rebasing: $1"
+	p
+	git checkout $1
+	git fetch origin
+	git rebase origin/master
+}
 
 # Set hub option
 eval "$(hub alias -s)"
@@ -47,6 +58,7 @@ git config --global core.editor "code --wait"
 
 # Add python to the PATH
 export PATH="/usr/local/share/python/:$PATH"
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin:$PATH"
@@ -54,27 +66,14 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Add local node modules to PATH
 export PATH="./node_modules/.bin:$PATH"
 
+# Add arcanist to PATH
+export PATH="/Users/christian/install/arcanist/bin/:$PATH"
+
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
-if [[ "${USER}" == "christian" ]]; then
-
-	export PATH="/Users/christian/install/arcanist/bin/:$PATH"
-
-else
-
-	# Set maven options
-	export MAVEN_OPTS="-Xms512m -Xmx1024m -XX:PermSize=128m -XX:MaxPermSize=512m -XX:NewSize=64m"
-
-	# Disable simple_cov
-	export SIMPLE_COV_ENABLED="false"
-
-	# Copy the sublime preferences
-	cp -r extra/Preferences.sublime-settings ~/Library/Application\ Support/Sublime\ Text*/Packages/User/Preferences.sublime-settings 2> /dev/null
-
-	# JRUBY
-	export JRUBY_OPTS="--dev"
-fi;
+# Set JAVA_HOME
+export JAVA_HOME=$(/usr/libexec/java_home)
 
 # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.rvm/bin"
