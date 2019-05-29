@@ -21,7 +21,7 @@ alias g="cd ~/code/gestalt"
 alias p="cd ~/code/pinboard"
 alias pw="cd ~/code/pinboard/webapp"
 
-alias j="yarn run jest --watch"
+alias j="yarn run jest --watch --verbose=false"
 
 alias gupdate="g && git fetch upstream && git rebase upstream/master"
 alias grun="g && yarn && yarn start"
@@ -57,7 +57,7 @@ git config --global core.editor "code --wait"
 ### ENV Variables
 
 # Setting CDPATH allows you to jump fast to a directory
-export CDPATH="~/code"
+export CDPATH=".:~/:~/code"
 
 # Add python to the PATH
 export PATH="/usr/local/share/python/:$PATH"
