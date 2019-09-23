@@ -20,11 +20,8 @@ alias c="cd ~/code"
 alias g="cd ~/code/gestalt"
 alias p="cd ~/code/pinboard"
 alias pw="cd ~/code/pinboard/webapp"
-
 alias j="yarn run jest --watch --verbose=false"
 
-alias gupdate="g && git fetch upstream && git rebase upstream/master"
-alias grun="g && yarn && yarn start"
 alias pupdate="p && git co master && git fetch origin && git rebase origin/master"
 
 alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
@@ -33,6 +30,20 @@ alias sshpt="ssh devapp -t 'cd ~/code/pinboard && make web && bash --login'"
 alias wp="pw && yarn dev"
 alias nw="BUILD=node yarn jest --watch"
 alias cw="BUILD=client yarn jest --watch"
+alias debug="pw && ssh -A -N -L 9229:localhost:9229 devapp"
+
+alias p2="cd ~/code/pinboard2"
+alias pw2="cd ~/code/pinboard2/webapp"
+alias wp2="pw2 && ./run-forever.sh watchman-sync --root ../ --remote devapp2:~/code/pinboard/"
+alias debug2="pw2 && ssh -A -N -L 9229:localhost:9229 devapp2"
+alias sshp2="ssh devapp2 -t 'cd ~/code/pinboard && bash --login'"
+alias sshpt2="ssh devapp2 -t 'cd ~/code/pinboard && make web && bash --login'"
+alias pupdate2="p2 && git co master && git fetch origin && git rebase origin/master"
+
+alias glogin="gironde login cvuerings"
+alias gsigndevapp="glogin && gironde sign -ca dev-cvuerings --user cvuerings"
+alias gsignengineering="glogin && gironde sign -ca engineering --user cvuerings"
+alias gsignwebplatform="glogin && gironde sign -ca web-platform --user cvuerings"
 
 gcr () {
   echo "Checking out and rebasing: $1"
