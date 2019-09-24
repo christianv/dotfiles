@@ -12,9 +12,6 @@ rvm install 2.0.0
 # Install scss_lint
 gem install scss_lint
 
-# Install starred atom packages
-apm stars --install
-
 # Install Hub (better git)
 brew install hub
 
@@ -45,13 +42,11 @@ brew cask install webpquicklook
 brew cask install suspicious-package
 
 # Only install for Pinterest
-if [[ "${USER}" == "christian" ]]; then
-  cd ~
-	mkd install
-	git clone https://github.com/phacility/libphutil.git
-	git clone https://github.com/phacility/arcanist.git
-	arc set-config phabricator.uri https://phabricator.pinadmin.com/
-fi;
+cd ~
+mkd install
+git clone https://github.com/phacility/libphutil.git
+git clone https://github.com/phacility/arcanist.git
+arc set-config phabricator.uri https://phabricator.pinadmin.com/
 
 # Install CLI tools
 brew install bat

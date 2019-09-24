@@ -1,14 +1,9 @@
 # Git credentials
 # Not in the repository, to prevent people from accidentally committing under my name
 GIT_AUTHOR_NAME="Christian Vuerings"
+GIT_AUTHOR_EMAIL="cvuerings@pinterest.com"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 git config --global user.name "$GIT_AUTHOR_NAME"
-
-if [[ "${USER}" == "christian" ]]; then
-	GIT_AUTHOR_EMAIL="cvuerings@pinterest.com"
-else
-	GIT_AUTHOR_EMAIL="vueringschristian@gmail.com"
-fi;
 
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
@@ -81,7 +76,7 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 export PATH="./node_modules/.bin:$PATH"
 
 # Add arcanist to PATH
-export PATH="/Users/christian/install/arcanist/bin/:$PATH"
+export PATH="/Users/cvuerings/install/arcanist/bin/:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
@@ -96,40 +91,38 @@ export PATH="$PATH:$HOME/.rvm/bin"
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 
-if [[ "${USER}" == "christian" ]]; then
-	# Watcher script for Pinterest
-	function watcher() {
-		local HOST=devapp
+# Watcher script for Pinterest
+function watcher() {
+  local HOST=devapp
 
-		if [ $# -eq 1 ]; then
-      local PROJECT=$1
-    else
-      local PROJECT=pinboard
-    fi
+  if [ $# -eq 1 ]; then
+    local PROJECT=$1
+  else
+    local PROJECT=pinboard
+  fi
 
-		case $PROJECT in
-    magnus)
-      FLAGS="--exclude-git --exclude=/bin --exclude=/pkg"
-      ;;
-    optimus)
-      FLAGS="--exclude=*.jar"
-      ;;
-    *)
-      FLAGS="--exclude-git"
-      ;;
-		esac
+  case $PROJECT in
+  magnus)
+    FLAGS="--exclude-git --exclude=/bin --exclude=/pkg"
+    ;;
+  optimus)
+    FLAGS="--exclude=*.jar"
+    ;;
+  *)
+    FLAGS="--exclude-git"
+    ;;
+  esac
 
-		if [ -z "`pgrep -fl ssh | grep '[s]sh -MNf '$HOST`" ]; then
-      echo "Starting: ssh -MNf $HOST"
-      ssh -MNf $HOST
-    fi
+  if [ -z "`pgrep -fl ssh | grep '[s]sh -MNf '$HOST`" ]; then
+    echo "Starting: ssh -MNf $HOST"
+    ssh -MNf $HOST
+  fi
 
-		python $HOME/code/pinboard/bin/watcher.py \
-    	$FLAGS \
-    	-s $HOME/code/$PROJECT/ \
-    	$HOST:/home/cvuerings/code/$PROJECT/
-	}
-fi;
+  python $HOME/code/pinboard/bin/watcher.py \
+    $FLAGS \
+    -s $HOME/code/$PROJECT/ \
+    $HOST:/home/cvuerings/code/$PROJECT/
+}
 
 
 # Install script
