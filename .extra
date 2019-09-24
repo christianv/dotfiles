@@ -78,6 +78,10 @@ export PATH="./node_modules/.bin:$PATH"
 # Add arcanist to PATH
 export PATH="/Users/cvuerings/install/arcanist/bin/:$PATH"
 
+# Add bash completion
+# export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+# [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
 
