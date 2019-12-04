@@ -17,6 +17,7 @@ alias p="cd ~/code/pinboard"
 alias pw="cd ~/code/pinboard/webapp"
 alias j="yarn run jest --watch --verbose=false"
 
+alias gupdate="g && git co master && git fetch upstream && git rebase upstream/master"
 alias pupdate="p && git co master && git fetch origin && git rebase origin/master"
 
 alias sshp="ssh devapp -t 'cd ~/code/pinboard && bash --login'"
@@ -42,10 +43,10 @@ alias gsignwebplatform="glogin && gironde sign -ca web-platform --user cvuerings
 
 gcr () {
   echo "Checking out and rebasing: $1"
-	p
-	git checkout $1
-	git fetch origin
-	git rebase origin/master
+  p
+  git checkout $1
+  git fetch origin
+  git rebase origin/master
 }
 
 # Set hub option
@@ -75,9 +76,6 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Add local node modules to PATH
 export PATH="./node_modules/.bin:$PATH"
 
-# Add arcanist to PATH
-export PATH="/Users/cvuerings/install/arcanist/bin/:$PATH"
-
 # Add bash completion
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -99,6 +97,37 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+
+# Arc diff with nolint and nounit + automatically reply to questions
+function ad() {
+	expect <<EOD
+set timeout -1
+spawn arc diff --nolint --nounit --browse
+match_max 100000
+expect "Provide explanation for skipping lint or press Enter to abort"
+send -- "remote\r"
+expect "Provide explanation for skipping unit tests or press Enter to abort"
+send -- "remote\r"
+expect eof
+EOD
+}
+
+
+# Arc land a diff and retry 5 times
+# Usage: `al branch-name`
+function al() {
+  if [[ $# -eq 0 ]] ; then
+    echo 'Please pass in a branch name: `al remove-ngapp`'
+  else
+    n=0
+    until [ $n -ge 5 ]
+    do
+      arc land $1 && break
+      n=$[$n+1]
+      sleep 1
+    done
+  fi
+}
 
 # Watcher script for Pinterest
 function watcher() {
@@ -170,3 +199,60 @@ _arc ()
   COMPREPLY=( $(compgen -W "${OPTS}" -- ${CUR}) )
 }
 complete -F _arc -o filenames arc
+
+
+# Automatically change Node.js version based on `.nvmrc`
+find-up () {
+  path=$(pwd)
+  while [[ "$path" != "" && ! -e "$path/$1" ]]; do
+    path=${path%/*}
+  done
+  echo "$path"
+}
+
+cdnvm(){
+  cd "$@";
+  nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+
+  # If there are no .nvmrc file, use the default nvm version
+  if [[ ! $nvm_path = *[^[:space:]]* ]]; then
+
+    declare default_version;
+    default_version=$(nvm version default);
+
+    # If there is no default version, set it to `node`
+    # This will use the latest version on your machine
+    if [[ $default_version == "N/A" ]]; then
+      nvm alias default node;
+      default_version=$(nvm version default);
+    fi
+
+    # If the current version is not the default version, set it to use the default version
+    if [[ $(nvm current) != "$default_version" ]]; then
+      nvm use default;
+    fi
+
+    elif [[ -s $nvm_path/.nvmrc && -r $nvm_path/.nvmrc ]]; then
+    declare nvm_version
+    nvm_version=$(<"$nvm_path"/.nvmrc)
+
+    declare locally_resolved_nvm_version
+    # `nvm ls` will check all locally-available versions
+    # If there are multiple matching versions, take the latest one
+    # Remove the `->` and `*` characters and spaces
+    # `locally_resolved_nvm_version` will be `N/A` if no local versions are found
+    locally_resolved_nvm_version=$(nvm ls --no-colors "$nvm_version" | tail -1 | tr -d '\->*' | tr -d '[:space:]')
+
+    # If it is not already installed, install it
+    # `nvm install` will implicitly use the newly-installed version
+    if [[ "$locally_resolved_nvm_version" == "N/A" ]]; then
+      nvm install "$nvm_version";
+    elif [[ $(nvm current) != "$locally_resolved_nvm_version" ]]; then
+      nvm use "$nvm_version";
+    fi
+  fi
+}
+alias cd='cdnvm'
+
+# Run ever time we open a new terminal tab/window
+cdnvm .

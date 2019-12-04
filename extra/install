@@ -42,13 +42,20 @@ brew cask install qlprettypatch
 brew cask install quicklook-csv
 brew cask install betterzipql
 brew cask install webpquicklook
+
+brew cask install calibre
 brew cask install suspicious-package
+brew cask install webtorrent
+
 
 # Install CLI tools
 brew install bat
 brew install prettyping
 brew install htop
 brew install diff-so-fancy
+brew install yarn
+brew install watchman
+brew install ag
 
 # Only install for Pinterest
 cd ~
