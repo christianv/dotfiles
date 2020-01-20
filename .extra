@@ -36,6 +36,11 @@ alias sshp2="ssh devapp2 -t 'cd ~/code/pinboard && bash --login'"
 alias sshpt2="ssh devapp2 -t 'cd ~/code/pinboard && make web && bash --login'"
 alias pupdate2="p2 && git co master && git fetch origin && git rebase origin/master"
 
+# inspired by https://github.com/roymarantz/junos-pulse/blob/master/vpn_reconnect.applescript
+alias vpnconnect="osascript ~/code/dotfiles/vpnconnect.scpt"
+
+# Logs into gironde with a keychain access secret
+# Follow https://www.netmeister.org/blog/keychain-passwords.html to add the "gironde" Keychain Item
 function glogin() {
 	expect <<EOD
 set timeout -1
