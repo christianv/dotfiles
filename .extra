@@ -130,19 +130,15 @@ EOD
 
 
 # Arc land a diff and retry 5 times
-# Usage: `al branch-name`
+# Usage: `al branch-name` or `al` to land the current branch
 function al() {
-  if [[ $# -eq 0 ]] ; then
-    echo 'Please pass in a branch name: `al remove-ngapp`'
-  else
-    n=0
-    until [ $n -ge 5 ]
-    do
-      arc land $1 && break
-      n=$[$n+1]
-      sleep 1
-    done
-  fi
+  n=0
+  until [ $n -ge 5 ]
+  do
+    arc land $1 && break
+    n=$[$n+1]
+    sleep 1
+  done
 }
 
 # Watcher script for Pinterest
