@@ -44,7 +44,7 @@ alias vpnconnect="osascript ~/code/dotfiles/vpnconnect.scpt"
 function glogin() {
 	expect <<EOD
 set timeout -1
-spawn gironde login
+spawn gironde login --force
 match_max 100000
 expect "Please enter the LDAP password for ${USER}:"
 send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
