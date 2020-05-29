@@ -35,8 +35,15 @@ alias debug2="pw2 && ssh -A -N -L 9229:localhost:9229 devapp2"
 alias sshp2="ssh devapp2 -t 'cd ~/code/pinboard && bash --login'"
 alias sshpt2="ssh devapp2 -t 'cd ~/code/pinboard && make web && bash --login'"
 alias pupdate2="p2 && git co master && git fetch origin && git rebase origin/master"
+alias wpgestalt="gsigndevapp && pw && ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo:~/code/pinboard/ & ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo-ads:~/code/pinboard/ & ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo-sterling:~/code/pinboard/"
 
-# inspired by https://github.com/roymarantz/junos-pulse/blob/master/vpn_reconnect.applescript
+alias codebextools="gsigndevapp && code --remote ssh-remote+bruges /home/cvuerings/code/bextools"
+
+alias webapp="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/code/pinboard/webapp"
+
+# Inspired by
+# https://github.com/roymarantz/junos-pulse/blob/master/vpn_reconnect.applescript
+# https://gist.github.com/avadaneidanut/da9e333f60875cbaa84ea32386434600
 alias vpnconnect="osascript ~/code/dotfiles/vpnconnect.scpt"
 
 # Logs into gironde with a keychain access secret
@@ -73,6 +80,7 @@ eval "$(hub alias -s)"
 # Aliases
 git config --global alias.st 'status -s'
 git config --global alias.co 'checkout'
+git config --global alias.rb '!git fetch origin && git rebase origin/master'
 
 # Editor
 git config --global core.editor "code --wait"
@@ -96,10 +104,10 @@ export PATH="./node_modules/.bin:$PATH"
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
-for completion in "$(brew --prefix)/etc/bash_completion.d/"*
-do
-    . $completion
-done
+# for completion in "$(brew --prefix)/etc/bash_completion.d/"*
+# do
+#     . $completion
+# done
 
 export NVM_DIR="$HOME/.nvm"
   . "/usr/local/opt/nvm/nvm.sh"
@@ -216,7 +224,7 @@ source "$(dirname "$(command -v arc)")/../resources/shell/bash-completion"
 
 
 # Automatically change Node.js version based on `.nvmrc`
-find-up () {
+findup() {
   path=$(pwd)
   while [[ "$path" != "" && ! -e "$path/$1" ]]; do
     path=${path%/*}
@@ -226,7 +234,7 @@ find-up () {
 
 cdnvm(){
   cd "$@";
-  nvm_path=$(find-up .nvmrc | tr -d '[:space:]')
+  nvm_path=$(findup .nvmrc | tr -d '[:space:]')
 
   # If there are no .nvmrc file, use the default nvm version
   if [[ ! $nvm_path = *[^[:space:]]* ]]; then
