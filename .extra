@@ -44,6 +44,7 @@ alias webapp="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/cod
 # Inspired by
 # https://github.com/roymarantz/junos-pulse/blob/master/vpn_reconnect.applescript
 # https://gist.github.com/avadaneidanut/da9e333f60875cbaa84ea32386434600
+# https://gist.github.com/boinger/714c8bde0a04ba58e938ae2b88b5e5f7
 alias vpnconnect="osascript ~/code/dotfiles/vpnconnect.scpt"
 
 # Logs into gironde with a keychain access secret
