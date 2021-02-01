@@ -39,6 +39,7 @@ alias wpgestalt="gsigndevapp && pw && ./watchman-sync-wrapper.sh --selfRestart f
 
 alias codebextools="gsigndevapp && code --remote ssh-remote+bruges /home/cvuerings/code/bextools"
 
+alias pinboard="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/code/pinboard"
 alias webapp="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/code/pinboard/webapp"
 
 # Inspired by
@@ -46,6 +47,8 @@ alias webapp="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/cod
 # https://gist.github.com/avadaneidanut/da9e333f60875cbaa84ea32386434600
 # https://gist.github.com/boinger/714c8bde0a04ba58e938ae2b88b5e5f7
 alias vpnconnect="open '/Applications/Pulse Secure.app' && osascript ~/code/dotfiles/vpnconnect.scpt"
+
+alias start="vpnconnect; pinboard"
 
 # Logs into gironde with a keychain access secret
 # Follow https://www.netmeister.org/blog/keychain-passwords.html to add the "gironde" Keychain Item
@@ -307,7 +310,7 @@ cdnvm(){
 }
 alias cd='cdnvm'
 
-alias convertbooks=$(find . -name '*.epub' -type f -exec bash -c '/Applications/calibre.app/Contents/MacOS/ebook-convert "$0" "${0%.epub}.mobi" --prefer-author-sort --output-profile=kindle --linearize-tables --smarten-punctuation' {} \;)
+# alias convertbooks=$(find . -name '*.epub' -type f -exec bash -c '/Applications/calibre.app/Contents/MacOS/ebook-convert "$0" "${0%.epub}.mobi" --prefer-author-sort --output-profile=kindle --linearize-tables --smarten-punctuation' {} \;)
 
 # Run ever time we open a new terminal tab/window
 cdnvm .
