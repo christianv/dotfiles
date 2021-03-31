@@ -55,10 +55,14 @@ alias start="vpnconnect; pinboard"
 function glogin() {
 	expect <<EOD
 set timeout -1
-spawn gironde login --force
+spawn gironde login
 match_max 100000
-expect "Please enter the LDAP password for ${USER}:"
-send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
+expect {
+  "Please enter the LDAP password for ${USER}:" {
+    send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
+  }
+  "You are already logged in*"
+}
 expect "Login successful"
 send_user "Success!\n"
 EOD
