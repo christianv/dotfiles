@@ -37,7 +37,7 @@ alias sshpt2="ssh devapp2 -t 'cd ~/code/pinboard && make web && bash --login'"
 alias pupdate2="p2 && git co master && git fetch origin && git rebase origin/master"
 alias wpgestalt="gsigndevapp && pw && ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo:~/code/pinboard/ & ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo-ads:~/code/pinboard/ & ./watchman-sync-wrapper.sh --selfRestart false --root ../ --remote gestalt-demo-sterling:~/code/pinboard/"
 
-alias codebextools="gsigndevapp && code --remote ssh-remote+bruges /home/cvuerings/code/bextools"
+alias codebextools="gsigndevapp && code --remote ssh-remote+devapp2 /home/cvuerings/code/bextools"
 
 alias pinboard="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/code/pinboard"
 alias webapp="gsigndevapp && code --remote ssh-remote+devapp /home/cvuerings/code/pinboard/webapp"
@@ -68,7 +68,21 @@ send_user "Success!\n"
 EOD
 }
 # alias glogin="gironde login cvuerings"
-alias gloginotp="gironde login --otp "
+function gloginotp() {
+	expect <<EOD
+set timeout -1
+spawn gironde login --otp "$1"
+match_max 100000
+expect {
+  "Please enter the LDAP password for ${USER}:" {
+    send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
+  }
+  "You are already logged in*"
+}
+expect "Login successful"
+send_user "Success!\n"
+EOD
+}
 alias gsigndevapp="glogin && gironde sign -ca dev-cvuerings --user cvuerings"
 alias gsignengineering="glogin && gironde sign -ca engineering --user cvuerings"
 alias gsignwebplatform="glogin && gironde sign -ca web-platform --user cvuerings"
