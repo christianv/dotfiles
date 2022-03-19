@@ -98,6 +98,11 @@ grebase () {
   git rebase $remote/$default_branch
 }
 
+gconflicted() {
+	conflicting_files=$(git diff --check --relative | cut -d: -f1 | uniq)
+	echo -e "${conflicting_files | wc -l} Conflicting files:\n${conflicting_files}"
+}
+
 # Create a new branch based on the latest upstream
 gcreate () {
   remote="origin"
@@ -149,12 +154,15 @@ export PATH="/usr/local/share/npm/bin:$PATH"
 # Add local node modules to PATH
 export PATH="./node_modules/.bin:$PATH"
 
+# Add cargo (rust) to PATH
+export PATH="~/.cargo/bin:$PATH"
+
 # Add gnu-sed to PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 
 # Add bash completion
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+# export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
+# [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # for completion in "$(brew --prefix)/etc/bash_completion.d/"*
 # do
