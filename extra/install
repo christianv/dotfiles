@@ -3,15 +3,6 @@
 # Install Python
 brew install python
 
-# Install RVM
-curl -sSL https://get.rvm.io | bash
-
-# Install ruby 2.0.0
-rvm install 2.0.0
-
-# Install scss_lint
-gem install scss_lint
-
 # Install Hub (better git)
 brew install hub
 
@@ -22,15 +13,28 @@ brew install nvm
 brew install Caskroom/cask/java
 
 # Install other applications
+brew install --cask alfred
 brew install --cask appcleaner
+brew install --cask calibre
 brew install --cask cheatsheet
+brew install --cask copyclip
 brew install --cask dropbox
 brew install --cask firefox
+brew install --cask hiddenbar
+brew install --cask imageoptim
 brew install --cask iterm2
+brew install --cask kap
+brew install --cask raycast
+brew install --cask skype
 brew install --cask spectacle
 brew install --cask spotify
-brew install --cask virtualbox
+brew install --cask suspicious-package
 brew install --cask the-unarchiver
+brew install --cask virtualbox
+brew install --cask vlc
+brew install --cask waltr-heic-converter
+brew install --cask webtorrent
+brew install --cask visual-studio-code
 
 # https://github.com/sindresorhus/quick-look-plugins
 brew install --cask qlcolorcode
@@ -40,16 +44,11 @@ brew install --cask quicklook-json
 brew install --cask qlimagesize
 brew install --cask qlprettypatch
 brew install --cask quicklook-csv
-brew install --cask betterzipql
 brew install --cask webpquicklook
-
-brew install --cask calibre
-brew install --cask suspicious-package
-brew install --cask webtorrent
-
 
 # Install CLI tools
 brew install bat
+brew install bash
 brew install prettyping
 brew install htop
 brew install diff-so-fancy

@@ -126,19 +126,6 @@ gpush () {
   git push origin HEAD
 }
 
-# Set hub option
-eval "$(hub alias -s)"
-
-### Git Config
-
-# Aliases
-git config --global alias.st 'status -s'
-git config --global alias.co 'checkout'
-git config --global alias.rb '!git fetch origin && git rebase origin/master'
-
-# Editor
-git config --global core.editor "code --wait"
-
 ### ENV Variables
 
 # Setting CDPATH allows you to jump fast to a directory
@@ -148,6 +135,8 @@ export CDPATH=".:~/:~/code"
 export PATH="/usr/local/share/python/:$PATH"
 # export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin:$PATH"
 
@@ -156,6 +145,9 @@ export PATH="./node_modules/.bin:$PATH"
 
 # Add cargo (rust) to PATH
 export PATH="~/.cargo/bin:$PATH"
+
+# Add java to PATH
+export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # Add gnu-sed to PATH
 PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -169,8 +161,11 @@ PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
 #     . $completion
 # done
 
-export NVM_DIR="$HOME/.nvm"
-  . "/usr/local/opt/nvm/nvm.sh"
+# export NVM_DIR="$HOME/.nvm"
+#   . "/usr/local/opt/nvm/nvm.sh"
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 # Set JAVA_HOME
 export JAVA_HOME=$(/usr/libexec/java_home)
@@ -180,6 +175,19 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Set hub option
+eval "$(hub alias -s)"
+
+### Git Config
+
+# Aliases
+git config --global alias.st 'status -s'
+git config --global alias.co 'checkout'
+git config --global alias.rb '!git fetch origin && git rebase origin/master'
+
+# Editor
+git config --global core.editor "code --wait"
 
 # Add pyenv
 if command -v pyenv 1>/dev/null 2>&1; then
@@ -346,3 +354,6 @@ alias cd='cdnvm'
 
 # Run ever time we open a new terminal tab/window
 cdnvm .
+
+# set trackpad speed
+defaults write -g com.apple.trackpad.scaling 3
