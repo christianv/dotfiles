@@ -83,9 +83,9 @@ expect "Login successful"
 send_user "Success!\n"
 EOD
 }
-alias gsigndevapp="glogin && gironde sign -ca dev-cvuerings --user cvuerings"
-alias gsignengineering="glogin && gironde sign -ca engineering --user cvuerings"
-alias gsignwebplatform="glogin && gironde sign -ca web-platform --user cvuerings"
+alias gsigndevapp="glogin && gironde sign -ca dev-cvuerings --user cvuerings -type rsa"
+alias gsignengineering="glogin && gironde sign -ca engineering --user cvuerings -type rsa"
+alias gsignwebplatform="glogin && gironde sign -ca web-platform --user cvuerings -type rsa"
 
 # Rebase
 grebase () {
