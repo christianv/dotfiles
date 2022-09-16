@@ -131,6 +131,8 @@ gpush () {
 
 ### ENV Variables
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 # Setting CDPATH allows you to jump fast to a directory
 export CDPATH=".:~/:~/code"
 
