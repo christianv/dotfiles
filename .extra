@@ -8,6 +8,8 @@ git config --global user.name "$GIT_AUTHOR_NAME"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 
+git config --global init.defaultBranch main
+
 ### Aliases
 git config --global alias.sync '!git fetch origin && git rebase origin/master'
 
@@ -15,7 +17,7 @@ alias c="cd ~/code"
 alias g="cd ~/code/gestalt"
 alias p="cd ~/code/pinboard"
 alias pw="cd ~/code/pinboard/webapp"
-alias j="yarn run jest --watch --verbose=false"
+alias j="SKIP_JEST_METRO_RESULTS_REPORTER=true yarn run jest --watch --verbose=false"
 
 alias gupdate="g && git co master && git fetch upstream && git rebase upstream/master"
 alias pupdate="p && git co master && git fetch origin && git rebase origin/master"
@@ -58,10 +60,10 @@ set timeout -1
 spawn gironde login
 match_max 100000
 expect {
-  "Please enter the LDAP password for ${USER}:" {
-    send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
+  "Login successful!" {
+    sleep 1
   }
-  "You are already logged in*"
+  "User is already logged in*"
 }
 expect "Login successful"
 send_user "Success!\n"
@@ -77,7 +79,7 @@ expect {
   "Please enter the LDAP password for ${USER}:" {
     send -- "$(security find-generic-password -a ${USER} -s gironde -w)\r"
   }
-  "You are already logged in*"
+  "User is already logged in*"
 }
 expect "Login successful"
 send_user "Success!\n"
