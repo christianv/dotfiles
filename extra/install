@@ -16,6 +16,7 @@ brew install openjdk
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
 # Install other applications
+brew install --cask 1password
 brew install --cask alfred
 brew install --cask appcleaner
 brew install --cask calibre
