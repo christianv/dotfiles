@@ -60,6 +60,8 @@ brew install ag
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
-# Install Okta Verify
 brew install mas
+# Install Okta Verify
 mas install 490179405
+# Install Display Menu
+mas install 549083868
