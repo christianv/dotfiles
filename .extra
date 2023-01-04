@@ -106,6 +106,21 @@ export PATH="$PATH:$HOME/.rvm/bin"
 # Load RVM into a shell session *as a function*
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# Load Cambly specific aliases
+[[ -s "$HOME/.cambly" ]] && source "$HOME/.cambly"
+
+# Set up virtual env
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
+fi
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# Add Poetry to PATH
+export PATH="/Users/christian/.local/bin:$PATH"
+
 # Set hub option
 eval "$(hub alias -s)"
 

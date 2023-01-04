@@ -17,6 +17,7 @@ sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVir
 
 # Install other applications
 brew install --cask 1password
+brew install --cask 1password/tap/1password-cli
 brew install --cask alfred
 brew install --cask appcleaner
 brew install --cask calibre
@@ -60,6 +61,13 @@ brew install diff-so-fancy
 brew install yarn
 brew install watchman
 brew install ag
+
+# Install Vault CLI
+brew tap hashicorp/tap
+brew install hashicorp/tap/vault
+
+# Install Stripe CLI tools
+brew install stripe/stripe-cli/stripe
 
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
