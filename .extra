@@ -12,8 +12,8 @@ git config --global init.defaultBranch main
 git config --global alias.sync '!git fetch origin && git rebase origin/master'
 
 alias c="cd ~/code"
-alias fe="cd ~/code/Cambly-Frontend"
-alias be="cd ~/code/Cambly-Backend"
+alias cf="cd ~/code/Cambly-Frontend"
+alias cb="cd ~/code/Cambly-Backend"
 
 alias fp="git add .; git commit --amend --no-edit; git push -f origin HEAD"
 
