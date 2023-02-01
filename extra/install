@@ -7,7 +7,7 @@ brew install python
 brew install hub
 
 # Install NVM
-brew install nvm
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 # Install Java
 brew install openjdk
@@ -20,6 +20,7 @@ brew install --cask 1password
 brew install --cask 1password/tap/1password-cli
 brew install --cask alfred
 brew install --cask appcleaner
+brew install --cask aws-vpn-client
 brew install --cask calibre
 brew install --cask cheatsheet
 brew install --cask dropbox
@@ -31,8 +32,8 @@ brew install --cask iterm2
 brew install --cask jumpcut
 brew install --cask kap
 brew install --cask raycast
+brew install --cask rectangle
 brew install --cask skype
-brew install --cask spectacle
 brew install --cask spotify
 brew install --cask suspicious-package
 brew install --cask the-unarchiver
@@ -46,7 +47,6 @@ brew install --cask webtorrent
 brew install --cask qlcolorcode
 brew install --cask qlstephen
 brew install --cask qlmarkdown
-brew install --cask quicklook-json
 brew install --cask qlimagesize
 brew install --cask qlprettypatch
 brew install --cask quicklook-csv
@@ -68,9 +68,6 @@ brew install hashicorp/tap/vault
 
 # Install Stripe CLI tools
 brew install stripe/stripe-cli/stripe
-
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 
 brew install mas
 # Install Okta Verify
