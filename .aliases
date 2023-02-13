@@ -164,3 +164,5 @@ alias reload="exec $SHELL -l"
 alias path='echo -e ${PATH//:/\\n}'
 
 alias startcambly="cd ~/cambly/Cambly-Backend && vaultssh && heroku local -f Procfile.local -e .env-vault-dev"
+
+alias camblyopengrok="ngrok http 8080 --subdomain christian-cambly"
