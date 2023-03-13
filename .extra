@@ -72,6 +72,10 @@ export PATH="/opt/homebrew/bin:$PATH"
 # Add npm to the PATH
 export PATH="/usr/local/share/npm/bin:$PATH"
 
+# Add pnpm to the PATH
+export PNPM_HOME="/Users/christian/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
 # Add local node modules to PATH
 export PATH="./node_modules/.bin:$PATH"
 
