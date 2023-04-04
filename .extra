@@ -130,6 +130,9 @@ export PATH="/Users/christian/.local/bin:$PATH"
 # Set hub option
 eval "$(hub alias -s)"
 
+# Set GitHub copilot aliases
+eval "$(github-copilot-cli alias -- "$0")"
+
 ### Git Config
 
 # Aliases
