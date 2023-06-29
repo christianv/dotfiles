@@ -166,8 +166,11 @@ alias path='echo -e ${PATH//:/\\n}'
 alias nukecamblylegacy="pkill -9 python && pkill -9 nginx && pkill -9 node"
 # alias nukecambly='kill -9 $(lsof -ti:8080 -ti:8081 -ti:8082 -ti:8083 -ti:8084)'
 alias nukecambly='kill -9 $(lsof -t -i:8080-8084) 2> /dev/null'
-alias startcambly="nukecambly; open -a Docker; cd ~/cambly/Cambly-Frontend; npm install; cd ~/cambly/Cambly-Backend; poetry install; vaultssh; heroku local -f Procfile.local -e .env-vault-dev"
-alias startcamblyprod="cd ~/cambly/Cambly-Backend && vaultssh && heroku local -f Procfile.local -e .env-vault-prod"
-alias startcamblystaging="cd ~/cambly/Cambly-Backend && vaultssh && heroku local -f Procfile.local -e .env-vault-staging"
+alias awscamblydev="aws sts get-caller-identity --profile CamblyDevSecretsAccess > /dev/null || aws sso login --profile CamblyDevSecretsAccess"
+alias awscamblyprod="aws sts get-caller-identity --profile CamblyProdSecretsAccess > /dev/null || aws sso login --profile CamblyProdSecretsAccess"
+alias awscamblystaging="aws sts get-caller-identity --profile CamblyStagingSecretsAccess > /dev/null || aws sso login --profile CamblyStagingSecretsAccess"
+alias startcambly="nukecambly; open -a Docker; cd ~/cambly/Cambly-Frontend; npm install; cd ~/cambly/Cambly-Backend; poetry install; awscamblydev; heroku local -f Procfile.local -e .env-local-dev"
+alias startcamblyprod="cd ~/cambly/Cambly-Backend && awscamblyprod && heroku local -f Procfile.local -e .env-local-prod"
+alias startcamblystaging="cd ~/cambly/Cambly-Backend && awscamblystaging && heroku local -f Procfile.local -e ..env-local-staging"
 
 alias camblyopengrok="ngrok http 8080 --subdomain christian-cambly"

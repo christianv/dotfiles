@@ -17,6 +17,8 @@ alias cb="cd ~/cambly/Cambly-Backend"
 
 alias fp="git add .; git commit --amend --no-edit; git push -f origin HEAD"
 
+alias scripts="poetry run python -m scripts"
+
 # Rebase
 grebase () {
   remote="origin"
