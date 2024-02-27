@@ -217,3 +217,7 @@ cdnvm .
 
 # set trackpad speed
 defaults write -g com.apple.trackpad.scaling 3
+
+export EDITOR="code -w"
+
+source ~/cambly/Cambly-Backend/scripts/cambly_commands.sh

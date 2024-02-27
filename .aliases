@@ -171,6 +171,6 @@ alias awscamblyprod="aws sts get-caller-identity --profile CamblyProdSecretsAcce
 alias awscamblystaging="aws sts get-caller-identity --profile CamblyStagingSecretsAccess > /dev/null || aws sso login --profile CamblyStagingSecretsAccess"
 alias startcambly="nukecambly; open -a Docker; cd ~/cambly/Cambly-Frontend; npm install; cd ~/cambly/Cambly-Backend; poetry install; awscamblydev; heroku local -f Procfile.local -e .env-local-dev"
 alias startcamblyprod="cd ~/cambly/Cambly-Backend && awscamblyprod && heroku local -f Procfile.local -e .env-local-prod"
-alias startcamblystaging="cd ~/cambly/Cambly-Backend && awscamblystaging && heroku local -f Procfile.local -e ..env-local-staging"
+alias startcamblystaging="cd ~/cambly/Cambly-Backend && awscamblystaging && heroku local -f Procfile.local -e .env-local-staging"
 
 alias camblyopengrok="ngrok http 8080 --subdomain christian-cambly"

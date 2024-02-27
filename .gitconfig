@@ -186,3 +186,6 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
+[branch]
+	sort = -committerdate
