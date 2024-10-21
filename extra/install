@@ -1,13 +1,14 @@
+#! /bin/bash
 ## After main install
 
 # Install Python
 brew install python
 
 # Install Hub (better git)
-brew install hub
+# brew install hub
 
 # Install NVM
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
 
 # Install Java
 brew install openjdk
@@ -15,27 +16,37 @@ brew install openjdk
 # Symlink so system Java wrappers find the JDK
 sudo ln -sfn /opt/homebrew/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk
 
+# Install oh-my-zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Install oh-my-zsh plugins
+brew install zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
 # Install other applications
 brew install --cask 1password
 brew install --cask 1password/tap/1password-cli
-brew install --cask alfred
-brew install --cask appcleaner
-brew install --cask aws-vpn-client
 brew install --cask calibre
 brew install --cask cheatsheet
+brew install --cask cursor
 brew install --cask dropbox
 brew install --cask firefox
+brew install git
+brew install gh
 brew install --cask google-chrome
 brew install --cask hiddenbar
 brew install --cask imageoptim
 brew install --cask iterm2
-brew install --cask jumpcut
+# brew install --cask jumpcut
 brew install --cask kap
+brew install --cask qlvideo
 brew install --cask raycast
-brew install --cask rectangle
+# brew install --cask rectangle
+brew install ripgrep
 brew install --cask skype
 brew install --cask spotify
 brew install --cask suspicious-package
+brew install --cask --no-quarantine syntax-highlight
 brew install --cask the-unarchiver
 brew install --cask virtualbox
 brew install --cask visual-studio-code
@@ -44,13 +55,10 @@ brew install --cask waltr-heic-converter
 brew install --cask webtorrent
 
 # https://github.com/sindresorhus/quick-look-plugins
-brew install --cask qlcolorcode
+# brew install --cask qlcolorcode
 brew install --cask qlstephen
 brew install --cask qlmarkdown
 brew install --cask qlimagesize
-brew install --cask qlprettypatch
-brew install --cask quicklook-csv
-brew install --cask webpquicklook
 
 # Install CLI tools
 brew install bat
@@ -59,18 +67,9 @@ brew install prettyping
 brew install htop
 brew install diff-so-fancy
 brew install yarn
-brew install watchman
-brew install ag
+# brew install watchman
 
-# Install Vault CLI
-brew tap hashicorp/tap
-brew install hashicorp/tap/vault
-
-# Install Stripe CLI tools
-brew install stripe/stripe-cli/stripe
-
+# Mac App Store CLI - https://github.com/mas-cli/mas
 brew install mas
-# Install Okta Verify
-mas install 490179405
 # Install Display Menu
 mas install 549083868
