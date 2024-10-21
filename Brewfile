@@ -2,10 +2,10 @@
 # Usage: `brew bundle Brewfile`
 
 # Make sure we’re using the latest Homebrew
-update
+# update
 
 # Upgrade any already-installed formulae
-upgrade
+# upgrade
 
 # Install GNU core utilities (those that come with OS X are outdated)
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
@@ -32,7 +32,7 @@ upgrade
 # install narwhal
 
 # Install more recent versions of some OS X tools
-install vim --override-system-vi
+# install vim --override-system-vi
 # install homebrew/dupes/grep
 # install homebrew/dupes/screen
 # install homebrew/php/php55 --with-gmp
@@ -60,7 +60,7 @@ install vim --override-system-vi
 # Install other useful binaries
 # install ack
 #install exiv2
-install git
+# install git
 # install imagemagick --with-webp
 # install lynx
 # install node # This installs `npm` too using the recommended installation method
@@ -76,4 +76,4 @@ install git
 # install homebrew/versions/lua52
 
 # Remove outdated versions from the cellar
-cleanup
+# cleanup
