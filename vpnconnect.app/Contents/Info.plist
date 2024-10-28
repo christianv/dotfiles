@@ -10,16 +10,12 @@
 	<string>applet</string>
 	<key>CFBundleIconFile</key>
 	<string>applet</string>
-	<key>CFBundleIdentifier</key>
-	<string>com.apple.ScriptEditor.id.vpnconnectApp</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>vpnconnectApp</string>
+	<string>vpnconnect</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>aplt</string>
 	<key>LSMinimumSystemVersionByArchitecture</key>
@@ -51,24 +47,7 @@
 	<string>This script needs access to Siri to run.</string>
 	<key>NSSystemAdministrationUsageDescription</key>
 	<string>This script needs access to administer this system to run.</string>
-	<key>WindowState</key>
-	<dict>
-		<key>bundleDividerCollapsed</key>
-		<true/>
-		<key>bundlePositionOfDivider</key>
-		<real>0.0</real>
-		<key>dividerCollapsed</key>
-		<false/>
-		<key>eventLogLevel</key>
-		<integer>2</integer>
-		<key>name</key>
-		<string>ScriptWindowState</string>
-		<key>positionOfDivider</key>
-		<real>388</real>
-		<key>savedFrame</key>
-		<string>519 131 700 672 0 0 3440 1417 </string>
-		<key>selectedTab</key>
-		<string>description</string>
-	</dict>
+	<key>OSAAppletShowStartupScreen</key>
+	<false/>
 </dict>
 </plist>

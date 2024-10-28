@@ -104,10 +104,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source ~/.extra
+
 prompt_context() {
-	if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-		prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
-	fi
+  if [[ "$USER" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
+    prompt_segment black default "%(!.%{%F{yellow}%}.)$USER"
+  fi
 }
 
 # AIRLAB-DO-NOT-MODIFY section:ShellWrapper {{{
@@ -115,8 +117,11 @@ prompt_context() {
 
 # Source Airlab's shell integration, if it exists.
 if [ -e ~/.airlab/shellhelper.sh ]; then
-	source ~/.airlab/shellhelper.sh
+  source ~/.airlab/shellhelper.sh
 fi
 # AIRLAB-DO-NOT-MODIFY section:ShellWrapper }}}
+
+autoload -U compinit; compinit
+source <(yak completion zsh)
 
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

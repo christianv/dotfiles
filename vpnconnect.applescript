@@ -1,4 +1,7 @@
-set appname to "Pulse Secure"
+# Connect to VPN if disconnected
+# Compile: `osacompile -o vpnconnect.app vpnconnect.applescript`
+
+set appname to "GlobalProtect"
 
 tell application appname
 	if it is not running then
@@ -6,12 +9,19 @@ tell application appname
 	end if
 end tell
 
-tell application "System Events"
-	tell process "Pulse Secure"
-		set frontmost to true
-		click menu item "Connect" of menu of menu item "Connections" of menu "File" of menu bar 1
-		delay 2
-		keystroke "push"
-		keystroke return
+set x to (do shell script "curl https://git.musta.ch/airbnb/pineapple --max-time 1 && echo 'VPN Connected' || echo 'VPN Disconnected'")
+-- display dialog x
+
+if x = "VPN Disconnected" then
+	tell application "System Events"
+		tell process appname
+			set frontmost to true
+
+			click menu bar item 1 of menu bar 2
+			-- UI elements
+			click UI element "Connect" of window 1
+
+			click menu bar item 1 of menu bar 2
+		end tell
 	end tell
-end tell
+end if

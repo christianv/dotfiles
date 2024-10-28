@@ -15,6 +15,8 @@ alias d="cd ~/Developer"
 
 alias fp="git add .; git commit --amend --no-edit; git push -f origin HEAD"
 
+alias vpnconnect="osascript ~/vpnconnect.app"
+
 # Rebase
 grebase () {
   remote="origin"
