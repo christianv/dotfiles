@@ -17,6 +17,9 @@ alias fp="git add .; git commit --amend --no-edit; git push -f origin HEAD"
 
 alias vpnconnect="osascript ~/vpnconnect.app"
 
+alias ys="yak script"
+alias j="yak script jest:watch"
+
 # Rebase
 grebase () {
   remote="origin"
@@ -138,7 +141,8 @@ export PATH="$HOME/.local/bin:$PATH"
 # Aliases
 git config --global alias.st 'status -s'
 git config --global alias.co 'checkout'
-git config --global alias.rb '!git fetch origin && git rebase origin/master'
+git config --global alias.rb 'pull --rebase origin master'
+git config --global alias.p 'push origin HEAD --force-with-lease'
 
 # Editor
 git config --global core.editor "cursor --wait"
@@ -217,4 +221,3 @@ cdnvm .
 defaults write -g com.apple.trackpad.scaling 3
 
 export EDITOR="cursor -w"
-
